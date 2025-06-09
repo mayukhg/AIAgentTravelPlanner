@@ -91,7 +91,7 @@ The Multi-Agent Assistant System follows a sophisticated microservices-inspired 
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                          DATA PERSISTENCE LAYER                            │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│  SQLite Database (models.py)                                               │
+│  PostgreSQL Database (models.py)                                           │
 │  ├── CalendarEvent → Event storage and management                          │
 │  ├── ChatSession  → Session tracking and metadata                          │
 │  ├── ChatMessage  → Message history with agent attribution                 │
@@ -100,7 +100,7 @@ The Multi-Agent Assistant System follows a sophisticated microservices-inspired 
 │                           EXTERNAL SERVICES                                │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │  Amazon Bedrock                │  Perplexity AI                           │
-│  ├── Claude 3 Sonnet           │  ├── Real-time web search                │
+│  ├── Claude 3.5 Sonnet v4      │  ├── Real-time web search                │
 │  ├── LLM inference             │  ├── Current information                 │
 │  └── Natural language          │  └── Source citations                    │
 │      processing                │                                           │
