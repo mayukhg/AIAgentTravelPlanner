@@ -1,0 +1,69 @@
+name: Sync Documentation to Wiki
+
+on:
+  push:
+    paths:
+      - 'docs/**'
+    branches:
+      - main
+      - master
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  sync-wiki:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Clone wiki repository
+        run: |
+          git clone "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.wiki.git" wiki
+        continue-on-error: true
+
+      - name: Initialize wiki if it doesn't exist
+        run: |
+          if [ ! -d "wiki" ]; then
+            mkdir wiki
+            cd wiki
+            git init
+            git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.wiki.git"
+            echo "# Wiki" > Home.md
+            git add Home.md
+            git commit -m "Initialize wiki"
+            git push -u origin master
+            cd ..
+          fi
+
+      - name: Copy documentation files
+        run: |
+          cd wiki
+          # Remove old files except .git
+          find . -name "*.md" -not -path "./.git/*" -delete
+          
+          # Copy new documentation
+          cp -r ../docs/*.md .
+          
+          # Remove the docs README.md as it's not needed in wiki
+          rm -f README.md
+
+      - name: Commit and push changes
+        run: |
+          cd wiki
+          git add .
+          if ! git diff --staged --quiet; then
+            git commit -m "Update wiki documentation from docs/ folder"
+            git push origin master
+          else
+            echo "No changes to commit"
+          fi
