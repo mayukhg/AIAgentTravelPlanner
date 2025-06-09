@@ -161,7 +161,7 @@ Brief description of the page content.
 [Code examples and usage]
 
 ## Related Pages
-- [Link to related page](Related-Page)
+- [Development Guide](Development-Guide)
 ```
 
 ### Interactive Elements

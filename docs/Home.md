@@ -13,29 +13,22 @@ Welcome to the comprehensive documentation for the Multi-Agent Assistant System 
 ### Getting Started
 - **[Installation](Installation)** - Setup and configuration
 - **[Configuration](Configuration)** - Environment variables and settings
-- **[Quick Start Guide](Quick-Start)** - Your first steps with the system
+- **[User Guide](User-Guide)** - Your first steps with the system
 
 ### Architecture & Design
 - **[System Architecture](System-Architecture)** - High-level system design
 - **[Agent Framework](Agent-Framework)** - Multi-agent system overview
-- **[Workflow Engine](Workflow-Engine)** - Task orchestration and routing
 - **[Database Schema](Database-Schema)** - Data models and relationships
 
 ### API Documentation
 - **[REST API Reference](API-Reference)** - Complete API documentation
-- **[Agent Endpoints](Agent-Endpoints)** - Agent-specific API calls
-- **[WebSocket API](WebSocket-API)** - Real-time communication
 
 ### Development
 - **[Development Guide](Development-Guide)** - For contributors and developers
-- **[Testing Guide](Testing-Guide)** - How to test the system
-- **[Deployment Guide](Deployment-Guide)** - Production deployment
 - **[Troubleshooting](Troubleshooting)** - Common issues and solutions
 
 ### Security & Operations
 - **[Security Guidelines](Security-Guidelines)** - Security best practices
-- **[Monitoring & Logging](Monitoring-Logging)** - System monitoring
-- **[Performance Tuning](Performance-Tuning)** - Optimization guidelines
 
 ## 🤖 AI Agents Overview
 
