@@ -4,7 +4,36 @@ from typing import Dict, Any, List
 from .base_agent import BaseAgent
 
 class PersonalAssistantAgent(BaseAgent):
-    """Main coordinator agent that delegates tasks to specialized agents"""
+    """
+    Main coordinator agent that delegates tasks to specialized agents.
+    
+    The Personal Assistant Agent serves as the central orchestrator in the multi-agent
+    system, implementing the Coordinator pattern. Its primary responsibilities include:
+    
+    1. Task Analysis: Analyzes incoming user requests to understand intent and requirements
+    2. Agent Selection: Determines which specialized agent is best suited for each task
+    3. Delegation Management: Routes tasks to appropriate agents and manages responses
+    4. Conversation Continuity: Maintains context across multi-turn conversations
+    5. Fallback Handling: Provides direct assistance when no specialized agent is needed
+    
+    Decision-Making Process:
+    1. Receive user input and conversation context
+    2. Analyze task using LLM to classify request type
+    3. Check if delegation to specialized agent is needed
+    4. If yes: Route to appropriate agent and format response
+    5. If no: Handle directly with general assistance capabilities
+    
+    The agent maintains a registry of available specialized agents and their capabilities,
+    enabling dynamic agent discovery and intelligent task routing based on current
+    system state and agent availability.
+    
+    Key Features:
+    - Intelligent task classification using LLM analysis
+    - Dynamic agent registration and capability discovery
+    - Context-aware delegation decisions
+    - Graceful fallback to direct response handling
+    - Comprehensive error handling and recovery
+    """
     
     def __init__(self, bedrock_service, tools_service=None):
         super().__init__("personal_assistant", bedrock_service, tools_service)

@@ -4,9 +4,45 @@ from typing import Dict, Any, List, Optional
 from datetime import datetime
 
 class BaseAgent(ABC):
-    """Base class for all agents in the multi-agent system"""
+    """
+    Abstract base class for all agents in the multi-agent system.
+    
+    This class establishes the core interface and shared functionality that all
+    specialized agents must implement. It provides:
+    
+    1. Agent Identity: Unique agent type identification and metadata
+    2. Capability Declaration: Abstract method for declaring agent capabilities
+    3. Task Handling: Abstract methods for task routing and processing
+    4. Response Formatting: Standardized response and error formatting
+    5. LLM Integration: Common interface for language model interactions
+    6. Logging: Structured logging for debugging and monitoring
+    
+    The base agent follows the Strategy pattern, where each specialized agent
+    implements specific task handling strategies while sharing common infrastructure.
+    
+    Agent Lifecycle:
+    1. Initialization with required services (Bedrock, Tools, etc.)
+    2. Registration with the workflow coordinator
+    3. Task evaluation via can_handle() method
+    4. Task processing via process_task() method
+    5. Response formatting and delivery
+    
+    Design Principles:
+    - Single Responsibility: Each agent has a focused domain of expertise
+    - Open/Closed: Extensible for new agent types without modifying existing code
+    - Dependency Injection: Services provided via constructor for testability
+    - Error Handling: Graceful error handling with structured error responses
+    """
     
     def __init__(self, agent_type: str, bedrock_service, tools_service=None):
+        """
+        Initialize base agent with required services and configuration.
+        
+        Args:
+            agent_type: Unique identifier for this agent type (e.g., 'calendar_agent')
+            bedrock_service: Amazon Bedrock service for LLM interactions
+            tools_service: Optional tools service for built-in development tools
+        """
         self.agent_type = agent_type
         self.bedrock_service = bedrock_service
         self.tools_service = tools_service
@@ -14,17 +50,59 @@ class BaseAgent(ABC):
         
     @abstractmethod
     def get_system_prompt(self) -> str:
-        """Return the system prompt for this agent"""
+        """
+        Return the system prompt that defines this agent's behavior and capabilities.
+        
+        This prompt is sent to the LLM to establish the agent's role, expertise,
+        and behavioral guidelines. It should include:
+        - Agent's primary purpose and domain expertise
+        - Available capabilities and tools
+        - Interaction guidelines and constraints
+        - Output format specifications
+        
+        Returns:
+            str: The system prompt for this agent
+        """
         pass
     
     @abstractmethod
     def can_handle(self, task: str, context: Dict[str, Any]) -> bool:
-        """Determine if this agent can handle the given task"""
+        """
+        Determine if this agent can handle the given task.
+        
+        This method implements the agent's task routing logic, analyzing
+        the user's request to determine if it falls within this agent's
+        domain of expertise. Uses keyword matching, context analysis,
+        and domain-specific patterns.
+        
+        Args:
+            task: The user's request or task description
+            context: Additional context including conversation history
+            
+        Returns:
+            bool: True if this agent should handle the task, False otherwise
+        """
         pass
     
     @abstractmethod
     async def process_task(self, task: str, context: Dict[str, Any]) -> Dict[str, Any]:
-        """Process the given task and return results"""
+        """
+        Process the given task and return structured results.
+        
+        This is the main processing method where the agent performs its
+        specialized work. The implementation should:
+        1. Parse and analyze the task requirements
+        2. Execute the necessary operations (API calls, database queries, etc.)
+        3. Format the results in a standardized response structure
+        4. Handle errors gracefully with appropriate error responses
+        
+        Args:
+            task: The user's request to process
+            context: Processing context including session data and history
+            
+        Returns:
+            Dict[str, Any]: Standardized response with content, metadata, and status
+        """
         pass
     
     def get_capabilities(self) -> List[str]:

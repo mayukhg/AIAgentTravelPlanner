@@ -6,7 +6,35 @@ from botocore.exceptions import ClientError, NoCredentialsError
 import config
 
 class BedrockService:
-    """Service for Amazon Bedrock LLM integration"""
+    """
+    Service for Amazon Bedrock LLM integration.
+    
+    This service provides a unified interface for interacting with Amazon Bedrock
+    foundation models, specifically optimized for Claude 3 Sonnet. It handles:
+    
+    1. AWS Authentication: Manages AWS credentials and regional configuration
+    2. Request Formatting: Converts conversation format to Bedrock API specifications
+    3. Response Processing: Parses and extracts content from Bedrock responses
+    4. Error Handling: Comprehensive error handling with retry logic and fallbacks
+    5. Health Monitoring: Service availability and performance monitoring
+    
+    Key Features:
+    - Multi-model support with Claude-optimized request formatting
+    - Automatic retry mechanisms for transient failures
+    - Structured error responses with actionable error messages
+    - Configuration-driven model selection and parameters
+    - Health check endpoints for monitoring and alerting
+    
+    The service abstracts the complexity of the Bedrock API, providing a simple
+    async interface for agents to generate natural language responses. It handles
+    conversation context, system prompts, and response parameters automatically.
+    
+    Security Considerations:
+    - AWS credentials managed via environment variables
+    - Request/response logging excludes sensitive data
+    - Rate limiting and timeout controls prevent abuse
+    - Model access controlled via IAM policies
+    """
     
     def __init__(self):
         self.logger = logging.getLogger("services.bedrock")

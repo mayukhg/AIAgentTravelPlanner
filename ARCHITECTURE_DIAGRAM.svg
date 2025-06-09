@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; fill: #2c3e50; }
+      .layer-title { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #34495e; }
+      .component { font-family: Arial, sans-serif; font-size: 11px; fill: #2c3e50; }
+      .service { font-family: Arial, sans-serif; font-size: 10px; fill: #2c3e50; }
+      .arrow { stroke: #3498db; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .flow-arrow { stroke: #e74c3c; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .layer-box { fill: #ecf0f1; stroke: #bdc3c7; stroke-width: 1; }
+      .ui-box { fill: #3498db; stroke: #2980b9; stroke-width: 2; }
+      .api-box { fill: #2ecc71; stroke: #27ae60; stroke-width: 2; }
+      .workflow-box { fill: #f39c12; stroke: #e67e22; stroke-width: 2; }
+      .agent-box { fill: #9b59b6; stroke: #8e44ad; stroke-width: 2; }
+      .service-box { fill: #e67e22; stroke: #d35400; stroke-width: 2; }
+      .data-box { fill: #34495e; stroke: #2c3e50; stroke-width: 2; }
+      .external-box { fill: #95a5a6; stroke: #7f8c8d; stroke-width: 2; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3498db" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="25" text-anchor="middle" class="title">Multi-Agent Assistant System Architecture</text>
+
+  <!-- User Interface Layer -->
+  <rect x="50" y="50" width="1100" height="80" class="layer-box" />
+  <text x="70" y="70" class="layer-title">USER INTERFACE LAYER</text>
+  
+  <rect x="100" y="85" width="180" height="35" class="ui-box" rx="5" />
+  <text x="190" y="105" text-anchor="middle" class="component">Web Browser Client</text>
+  
+  <rect x="300" y="85" width="150" height="35" class="ui-box" rx="5" />
+  <text x="375" y="105" text-anchor="middle" class="component">Chat Interface</text>
+  
+  <rect x="470" y="85" width="150" height="35" class="ui-box" rx="5" />
+  <text x="545" y="105" text-anchor="middle" class="component">Landing Page</text>
+  
+  <rect x="640" y="85" width="150" height="35" class="ui-box" rx="5" />
+  <text x="715" y="105" text-anchor="middle" class="component">JavaScript Client</text>
+
+  <!-- Web Framework Layer -->
+  <rect x="50" y="150" width="1100" height="80" class="layer-box" />
+  <text x="70" y="170" class="layer-title">WEB FRAMEWORK LAYER</text>
+  
+  <rect x="100" y="185" width="200" height="35" class="api-box" rx="5" />
+  <text x="200" y="205" text-anchor="middle" class="component">Flask Application</text>
+  
+  <rect x="320" y="185" width="150" height="35" class="api-box" rx="5" />
+  <text x="395" y="205" text-anchor="middle" class="component">Main Routes</text>
+  
+  <rect x="490" y="185" width="150" height="35" class="api-box" rx="5" />
+  <text x="565" y="205" text-anchor="middle" class="component">API Routes</text>
+  
+  <rect x="660" y="185" width="150" height="35" class="api-box" rx="5" />
+  <text x="735" y="205" text-anchor="middle" class="component">Health Monitoring</text>
+
+  <!-- Workflow Orchestration Layer -->
+  <rect x="50" y="250" width="1100" height="100" class="layer-box" />
+  <text x="70" y="270" class="layer-title">WORKFLOW ORCHESTRATION LAYER</text>
+  
+  <rect x="100" y="285" width="250" height="55" class="workflow-box" rx="5" />
+  <text x="225" y="305" text-anchor="middle" class="component">Multi-Agent Workflow Engine</text>
+  <text x="225" y="320" text-anchor="middle" class="service">Session Management</text>
+  <text x="225" y="330" text-anchor="middle" class="service">Task Routing & Delegation</text>
+  
+  <rect x="370" y="285" width="150" height="55" class="workflow-box" rx="5" />
+  <text x="445" y="305" text-anchor="middle" class="component">WorkflowState</text>
+  <text x="445" y="320" text-anchor="middle" class="service">Session Context</text>
+  <text x="445" y="330" text-anchor="middle" class="service">Event History</text>
+  
+  <rect x="540" y="285" width="150" height="55" class="workflow-box" rx="5" />
+  <text x="615" y="305" text-anchor="middle" class="component">AgentState</text>
+  <text x="615" y="320" text-anchor="middle" class="service">Agent Context</text>
+  <text x="615" y="330" text-anchor="middle" class="service">Message History</text>
+  
+  <rect x="710" y="285" width="150" height="55" class="workflow-box" rx="5" />
+  <text x="785" y="305" text-anchor="middle" class="component">Health Monitor</text>
+  <text x="785" y="320" text-anchor="middle" class="service">System Status</text>
+  <text x="785" y="330" text-anchor="middle" class="service">Agent Discovery</text>
+
+  <!-- Agent Layer -->
+  <rect x="50" y="370" width="1100" height="120" class="layer-box" />
+  <text x="70" y="390" class="layer-title">AGENT LAYER</text>
+  
+  <rect x="100" y="405" width="200" height="75" class="agent-box" rx="5" />
+  <text x="200" y="425" text-anchor="middle" class="component">Personal Assistant</text>
+  <text x="200" y="440" text-anchor="middle" class="service">Task Coordination</text>
+  <text x="200" y="450" text-anchor="middle" class="service">Agent Selection</text>
+  <text x="200" y="460" text-anchor="middle" class="service">Delegation Logic</text>
+  <text x="200" y="470" text-anchor="middle" class="service">General Assistance</text>
+  
+  <rect x="320" y="405" width="150" height="75" class="agent-box" rx="5" />
+  <text x="395" y="425" text-anchor="middle" class="component">Calendar Agent</text>
+  <text x="395" y="440" text-anchor="middle" class="service">Event Management</text>
+  <text x="395" y="450" text-anchor="middle" class="service">Conflict Detection</text>
+  <text x="395" y="460" text-anchor="middle" class="service">Schedule Queries</text>
+  <text x="395" y="470" text-anchor="middle" class="service">Time Parsing</text>
+  
+  <rect x="490" y="405" width="150" height="75" class="agent-box" rx="5" />
+  <text x="565" y="425" text-anchor="middle" class="component">Search Agent</text>
+  <text x="565" y="440" text-anchor="middle" class="service">Web Search</text>
+  <text x="565" y="450" text-anchor="middle" class="service">Information Research</text>
+  <text x="565" y="460" text-anchor="middle" class="service">Source Citations</text>
+  <text x="565" y="470" text-anchor="middle" class="service">Current Events</text>
+  
+  <rect x="660" y="405" width="150" height="75" class="agent-box" rx="5" />
+  <text x="735" y="425" text-anchor="middle" class="component">Code Assistant</text>
+  <text x="735" y="440" text-anchor="middle" class="service">Code Generation</text>
+  <text x="735" y="450" text-anchor="middle" class="service">Debugging Help</text>
+  <text x="735" y="460" text-anchor="middle" class="service">Tool Integration</text>
+  <text x="735" y="470" text-anchor="middle" class="service">Programming Support</text>
+
+  <!-- Service Layer -->
+  <rect x="50" y="510" width="1100" height="100" class="layer-box" />
+  <text x="70" y="530" class="layer-title">SERVICE LAYER</text>
+  
+  <rect x="100" y="545" width="200" height="55" class="service-box" rx="5" />
+  <text x="200" y="565" text-anchor="middle" class="component">Bedrock Service</text>
+  <text x="200" y="580" text-anchor="middle" class="service">LLM Integration</text>
+  <text x="200" y="590" text-anchor="middle" class="service">Claude Model Inference</text>
+  
+  <rect x="320" y="545" width="180" height="55" class="service-box" rx="5" />
+  <text x="410" y="565" text-anchor="middle" class="component">Perplexity Service</text>
+  <text x="410" y="580" text-anchor="middle" class="service">Real-time Web Search</text>
+  <text x="410" y="590" text-anchor="middle" class="service">Source Citations</text>
+  
+  <rect x="520" y="545" width="150" height="55" class="service-box" rx="5" />
+  <text x="595" y="565" text-anchor="middle" class="component">Tools Service</text>
+  <text x="595" y="580" text-anchor="middle" class="service">Python REPL</text>
+  <text x="595" y="590" text-anchor="middle" class="service">File Operations</text>
+  
+  <rect x="690" y="545" width="150" height="55" class="service-box" rx="5" />
+  <text x="765" y="565" text-anchor="middle" class="component">Security Service</text>
+  <text x="765" y="580" text-anchor="middle" class="service">Input Validation</text>
+  <text x="765" y="590" text-anchor="middle" class="service">Access Control</text>
+
+  <!-- Data Persistence Layer -->
+  <rect x="50" y="630" width="1100" height="80" class="layer-box" />
+  <text x="70" y="650" class="layer-title">DATA PERSISTENCE LAYER</text>
+  
+  <rect x="100" y="665" width="150" height="35" class="data-box" rx="5" />
+  <text x="175" y="685" text-anchor="middle" class="component">SQLite Database</text>
+  
+  <rect x="270" y="665" width="120" height="35" class="data-box" rx="5" />
+  <text x="330" y="685" text-anchor="middle" class="component">CalendarEvent</text>
+  
+  <rect x="410" y="665" width="120" height="35" class="data-box" rx="5" />
+  <text x="470" y="685" text-anchor="middle" class="component">ChatSession</text>
+  
+  <rect x="550" y="665" width="120" height="35" class="data-box" rx="5" />
+  <text x="610" y="685" text-anchor="middle" class="component">ChatMessage</text>
+  
+  <rect x="690" y="665" width="120" height="35" class="data-box" rx="5" />
+  <text x="750" y="685" text-anchor="middle" class="component">AgentState</text>
+
+  <!-- External Services -->
+  <rect x="50" y="730" width="1100" height="60" class="layer-box" />
+  <text x="70" y="750" class="layer-title">EXTERNAL SERVICES</text>
+  
+  <rect x="200" y="760" width="200" height="25" class="external-box" rx="5" />
+  <text x="300" y="775" text-anchor="middle" class="component">Amazon Bedrock (Claude 3 Sonnet)</text>
+  
+  <rect x="420" y="760" width="200" height="25" class="external-box" rx="5" />
+  <text x="520" y="775" text-anchor="middle" class="component">Perplexity AI (Web Search)</text>
+  
+  <rect x="640" y="760" width="200" height="25" class="external-box" rx="5" />
+  <text x="740" y="775" text-anchor="middle" class="component">System Tools (Shell, Files)</text>
+
+  <!-- Data Flow Arrows -->
+  <line x1="190" y1="120" x2="190" y2="185" class="arrow" />
+  <line x1="200" y1="220" x2="225" y2="285" class="arrow" />
+  <line x1="225" y1="340" x2="200" y2="405" class="arrow" />
+  <line x1="200" y1="480" x2="200" y2="545" class="arrow" />
+  <line x1="395" y1="480" x2="330" y2="665" class="arrow" />
+  <line x1="565" y1="480" x2="410" y2="545" class="arrow" />
+  <line x1="735" y1="480" x2="595" y2="545" class="arrow" />
+  <line x1="200" y1="600" x2="300" y2="760" class="arrow" />
+  <line x1="410" y1="600" x2="520" y2="760" class="arrow" />
+  <line x1="595" y1="600" x2="740" y2="760" class="arrow" />
+
+  <!-- Agent Coordination Lines -->
+  <line x1="300" y1="442" x2="320" y2="442" class="flow-arrow" />
+  <line x1="300" y1="452" x2="490" y2="452" class="flow-arrow" />
+  <line x1="300" y1="462" x2="660" y2="462" class="flow-arrow" />
+
+  <!-- Legend -->
+  <rect x="920" y="60" width="220" height="180" fill="white" stroke="#bdc3c7" stroke-width="1" />
+  <text x="930" y="80" class="layer-title">Legend</text>
+  
+  <rect x="930" y="90" width="15" height="15" class="ui-box" />
+  <text x="950" y="102" class="service">User Interface</text>
+  
+  <rect x="930" y="110" width="15" height="15" class="api-box" />
+  <text x="950" y="122" class="service">Web Framework</text>
+  
+  <rect x="930" y="130" width="15" height="15" class="workflow-box" />
+  <text x="950" y="142" class="service">Workflow Engine</text>
+  
+  <rect x="930" y="150" width="15" height="15" class="agent-box" />
+  <text x="950" y="162" class="service">AI Agents</text>
+  
+  <rect x="930" y="170" width="15" height="15" class="service-box" />
+  <text x="950" y="182" class="service">Services</text>
+  
+  <rect x="930" y="190" width="15" height="15" class="data-box" />
+  <text x="950" y="202" class="service">Data Storage</text>
+  
+  <rect x="930" y="210" width="15" height="15" class="external-box" />
+  <text x="950" y="222" class="service">External APIs</text>
+</svg>
