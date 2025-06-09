@@ -1,5 +1,5 @@
 import logging
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 from .base_agent import BaseAgent
 
 class CodeAssistantAgent(BaseAgent):
@@ -180,7 +180,7 @@ Be thorough and educational in your debugging assistance."""
                 }
             )
             
-        except Exception e:
+        except Exception as e:
             self.logger.error(f"Error helping with debugging: {str(e)}")
             return self.format_error(f"Failed to provide debugging help: {str(e)}")
     
@@ -219,6 +219,10 @@ Be thorough and educational in your debugging assistance."""
     async def _use_python_repl(self, task: str, context: Dict[str, Any]) -> Dict[str, Any]:
         """Use Python REPL tool"""
         try:
+            # Check if tools service is available
+            if not self.tools_service:
+                return self.format_error("Python REPL tool is not available.")
+            
             # Extract Python code from the request
             code_to_run = await self._extract_python_code(task)
             
@@ -246,7 +250,7 @@ Be thorough and educational in your debugging assistance."""
             self.logger.error(f"Error using Python REPL: {str(e)}")
             return self.format_error(f"Failed to execute Python code: {str(e)}")
     
-    async def _extract_python_code(self, task: str) -> str:
+    async def _extract_python_code(self, task: str):
         """Extract Python code from user request"""
         # Simple extraction - look for code blocks or python-like syntax
         lines = task.split('\n')

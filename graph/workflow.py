@@ -10,7 +10,25 @@ from services import BedrockService, PerplexityService, ToolsService
 import config
 
 class MultiAgentWorkflow:
-    """LangGraph-inspired multi-agent workflow orchestrator"""
+    """
+    LangGraph-inspired multi-agent workflow orchestrator.
+    
+    This class serves as the central orchestration engine for the multi-agent system.
+    It manages agent registration, workflow execution, state persistence, and 
+    inter-agent communication. The workflow follows these key principles:
+    
+    1. Agent Coordination: Personal Assistant acts as coordinator, delegating to specialists
+    2. State Management: Persistent workflow and agent states across sessions
+    3. Async Processing: Non-blocking execution for improved performance
+    4. Health Monitoring: Comprehensive system health checks and monitoring
+    5. Session Management: Multi-session support with isolated contexts
+    
+    Architecture:
+    - WorkflowState: Manages overall workflow state and history
+    - AgentState: Individual agent state and conversation context
+    - Service Layer: External service integrations (Bedrock, Perplexity, Tools)
+    - Agent Layer: Specialized AI agents with specific capabilities
+    """
     
     def __init__(self):
         self.logger = logging.getLogger("graph.workflow")
