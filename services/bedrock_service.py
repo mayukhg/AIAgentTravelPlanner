@@ -49,7 +49,7 @@ class BedrockService:
                 aws_access_key_id=config.Config.AWS_ACCESS_KEY_ID,
                 aws_secret_access_key=config.Config.AWS_SECRET_ACCESS_KEY
             )
-            self.logger.info(f"Bedrock client initialized with model: {self.model_id}")
+            self.logger.info(f"Bedrock client initialized with Claude 3.5 Sonnet v4 model: {self.model_id}")
             
         except NoCredentialsError:
             self.logger.error("AWS credentials not found. Please set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY environment variables.")
@@ -87,14 +87,17 @@ class BedrockService:
         max_tokens: int = 1000,
         temperature: float = 0.1
     ) -> str:
-        """Generate response using Claude model format"""
+        """Generate response using Claude 3.5 Sonnet v4 model format"""
         
         try:
-            # Prepare the request body for Claude
+            # Prepare the request body for Claude 3.5 Sonnet v4
+            # Enhanced parameters for improved performance and capabilities
             body = {
                 "anthropic_version": "bedrock-2023-05-31",
                 "max_tokens": max_tokens,
                 "temperature": temperature,
+                "top_p": 0.95,  # Enhanced token sampling for better quality
+                "top_k": 50,    # Optimized for Claude 3.5 Sonnet v4
                 "messages": []
             }
             

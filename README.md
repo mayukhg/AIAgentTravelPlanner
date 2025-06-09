@@ -106,7 +106,7 @@ LangGraph-inspired orchestration system that:
    AWS_REGION=us-east-1
    AWS_ACCESS_KEY_ID=your_access_key
    AWS_SECRET_ACCESS_KEY=your_secret_key
-   BEDROCK_MODEL_ID=anthropic.claude-3-sonnet-20240229-v1:0
+   BEDROCK_MODEL_ID=anthropic.claude-3-5-sonnet-20241022-v2:0
    
    # Perplexity API (for web search)
    PERPLEXITY_API_KEY=your_perplexity_api_key
@@ -115,8 +115,9 @@ LangGraph-inspired orchestration system that:
    SESSION_SECRET=your-secret-key-here
    FLASK_DEBUG=True
    
-   # Database
-   DATABASE_URL=sqlite:///assistant.db
+   # Database (PostgreSQL)
+   DATABASE_URL=postgresql://username:password@host:port/database
+   # Note: DATABASE_URL is automatically configured when using the database tool
    ```
 
 3. **Run the Application**
@@ -276,7 +277,7 @@ The Code Assistant Agent provides access to several built-in tools:
 | `AWS_REGION` | AWS region for Bedrock | `us-east-1` |
 | `AWS_ACCESS_KEY_ID` | AWS access key | Required |
 | `AWS_SECRET_ACCESS_KEY` | AWS secret key | Required |
-| `BEDROCK_MODEL_ID` | Bedrock model identifier | `anthropic.claude-3-sonnet-20240229-v1:0` |
+| `BEDROCK_MODEL_ID` | Bedrock model identifier | `anthropic.claude-3-5-sonnet-20241022-v2:0` |
 | `PERPLEXITY_API_KEY` | Perplexity API key | Required for search |
 | `DATABASE_URL` | Database connection string | `sqlite:///assistant.db` |
 | `SESSION_SECRET` | Flask session secret | `dev-secret-key-change-in-production` |
