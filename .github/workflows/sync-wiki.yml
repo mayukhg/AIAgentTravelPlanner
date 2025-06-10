@@ -32,5 +32,10 @@ jobs:
           cp -r docs/* wiki/
           cd wiki
           git add .
-          git commit -m "Update wiki documentation from docs/ folder"
-          git push origin main
+          if ! git diff --staged --quiet; then
+            git commit -m "Update wiki documentation from docs/ folder"
+            # This command pushes the current commit to the remote 'master' branch
+            git push origin HEAD:master
+          else
+            echo "No changes to commit"
+          fi
