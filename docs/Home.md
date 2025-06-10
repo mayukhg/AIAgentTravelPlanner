@@ -16,6 +16,7 @@ Welcome to the comprehensive documentation for the Multi-Agent Assistant System 
 - **[User Guide](User-Guide)** - Your first steps with the system
 
 ### Architecture & Design
+- **[Architecture Diagram](AIAgentTravelPlanner_Architecture)** - Diagram showing interaction between the various components
 - **[System Architecture](System-Architecture)** - High-level system design
 - **[Agent Framework](Agent-Framework)** - Multi-agent system overview
 - **[Database Schema](Database-Schema)** - Data models and relationships
