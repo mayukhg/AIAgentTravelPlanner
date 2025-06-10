@@ -34,8 +34,8 @@ jobs:
           git add .
           if ! git diff --staged --quiet; then
             git commit -m "Update wiki documentation from docs/ folder"
-            # This command pushes the current commit to the remote 'master' branch
-            git push origin HEAD:master
+            # This command includes the token directly in the push URL for authentication
+            git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.wiki.git" HEAD:master
           else
             echo "No changes to commit"
           fi
