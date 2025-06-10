@@ -24,8 +24,8 @@ jobs:
 
       - name: Setup Git User
         run: |
-          git config --global user.email "mayukhg@gmail.com"
           git config --global user.name "mayukhg"
+          git config --global user.email "mayukhg@gmail.com"
         
       - name: Update wiki documentation
         run: |
