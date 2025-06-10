@@ -41,7 +41,7 @@ jobs:
             echo "# Wiki" > Home.md
             git add Home.md
             git commit -m "Initialize wiki"
-            git push -u origin master
+            git push -u origin HEAD:master
             cd ..
           fi
 
@@ -63,7 +63,7 @@ jobs:
           git add .
           if ! git diff --staged --quiet; then
             git commit -m "Update wiki documentation from docs/ folder"
-            git push origin master
+            git push origin HEAD:master
           else
             echo "No changes to commit"
           fi
